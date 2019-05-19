@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "UdaciFitness1",
-    "slug": "UdaciFitness1",
+    "name": "Triathlon Tracker",
+    "slug": "Triathlon Tracker",
     "privacy": "public",
     "sdkVersion": "32.0.0",
     "platforms": [
