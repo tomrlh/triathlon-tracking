@@ -6,40 +6,20 @@ import {
 	TouchableHighlight,
 	TouchableNativeFeedback,
 	TouchableOpacity,
-	TouchableWithoutFeedback
+	TouchableWithoutFeedback,
+	Slider
 } from 'react-native'
 import AddEntry from './components/AddEntry'
 import Br from './components/globals/Br'
 
 export default class App extends React.Component {
-	handlePress = () => {
-		// alert('Hello!')
+	state = {
+		value: 0
 	}
-	
 	render() {
 		return (
-			<View style={styles.container}>
-				<TouchableHighlight style={styles.btn} onPress={this.handlePress} underlayColor='#d4271b'>
-					<Text style={styles.btnText}>Touchable Highlight</Text>
-				</TouchableHighlight>
-				<Br/>
-				<TouchableOpacity style={styles.btn} onPress={this.handlePress} underlayColor='#d4271b'>
-					<Text style={styles.btnText}>Touchable Opacity</Text>
-				</TouchableOpacity>
-				<Br/>
-				<TouchableNativeFeedback backgroundstyle={styles.btn} onPress={this.handlePress}>
-					<View style={styles.btn}>
-						<Text style={styles.btnText}>Touchable Native Feedback</Text>
-					</View>
-				</TouchableNativeFeedback>
-				<Br/>
-				<TouchableWithoutFeedback
-					background={TouchableNativeFeedback.SelectableBackground()}
-					onPress={this.handlePress}>
-					<View style={styles.btn}>
-						<Text style={styles.btnText}>Touchable Without Feedback</Text>
-					</View>
-				</TouchableWithoutFeedback>
+			<View>
+				<AddEntry/>
 			</View>
 		)
 	}

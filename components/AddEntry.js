@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import { View } from 'react-native'
-import { getMetricMetaInfo } from '../utils/helpers'
-import Slider from './Slider'
+import { Text, TouchableOpacity, View } from 'react-native'
+import { getMetricMetaInfo, timeToString } from '../utils/helpers'
+import MySlider from './MySlider'
 import Stepper from './Stepper'
 import DateHeader from './DateHeader'
 
@@ -72,7 +72,6 @@ export default class AddEntry extends Component {
 		return (
 			<View>
 				<DateHeader date={(new Date()).toLocaleDateString()}/>
-				<Text>{JSON.stringify(this.state)}</Text>
 				{Object.keys(metaInfo).map((key) => {
 					const { getIcon, type, ...rest } = metaInfo[key]
 					const value = this.state[key]
@@ -81,7 +80,7 @@ export default class AddEntry extends Component {
 						<View key={key}>
 							{getIcon()}
 							{type === 'slider'
-								? <Slider
+								? <MySlider
 									value={value}
 									onChange={(value) => this.slide(key, value)}
 									{...rest}

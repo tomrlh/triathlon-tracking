@@ -889,6 +889,11 @@
     prop-types "^15.6.0"
     react-is "^16.6.3"
 
+"@react-native-community/slider@^1.1.2":
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/@react-native-community/slider/-/slider-1.1.2.tgz#a3eaeb7e0c6808c0d34c2dbb25eb855acc67ca1b"
+  integrity sha512-G9jwFzKy4JT/xkpFSlrdSkkQBtuFa0IiivgLPIsSbou54XlkP3uz5LgF7Of2aHQmoB3LqRzkogAZyhiK24+Zww==
+
 "@types/fbemitter@^2.0.32":
   version "2.0.32"
   resolved "https://registry.yarnpkg.com/@types/fbemitter/-/fbemitter-2.0.32.tgz#8ed204da0f54e9c8eaec31b1eec91e25132d082c"
