@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text, TouchableOpacity, View } from 'react-native'
+import { Text, TouchableOpacity, View, ScrollView, Platform, StyleSheet } from 'react-native'
 import { getMetricMetaInfo, timeToString, getDailyReminderValue } from '../utils/helpers'
 import MySlider from './MySlider'
 import Stepper from './Stepper'
@@ -9,11 +9,15 @@ import TextButton from './globals/TextButton'
 import { submitEntry, removeEntry } from '../utils/api'
 import { connect } from 'react-redux'
 import { addEntry } from '../actions'
+import { white, purple } from '../utils/colors'
 
 function SubmitBtn ({ onPress }) {
 	return (
-		<TouchableOpacity onPress={onPress}>
-			<Text>SUBMIT</Text>
+		<TouchableOpacity 
+			style={Platform.OS === 'ios' ? styles.iosSubmitBtn : styles.androidSubmitBtn}
+			onPress={onPress}>
+
+			<Text style={styles.submitBtnText}>SUBMIT</Text>
 		</TouchableOpacity>
 	)
 }
@@ -86,7 +90,7 @@ class AddEntry extends Component {
 
 		if(this.props.alreadyLogged) {
 			return (
-				<View>
+				<View style={styles.row}>
 					<Ionicons
 						name={'md-happy'}
 						size={100}
@@ -100,7 +104,7 @@ class AddEntry extends Component {
 		}
 
 		return (
-			<View>
+			<ScrollView style={styles.container}>
 				<DateHeader date={(new Date()).toLocaleDateString()}/>
 				{Object.keys(metaInfo).map((key) => {
 					const { getIcon, type, ...rest } = metaInfo[key]
@@ -126,10 +130,48 @@ class AddEntry extends Component {
 					)
 				})}
 				<SubmitBtn onPress={this.submit}/>
-			</View>
+			</ScrollView>
 		)
 	}
 }
+
+const styles = StyleSheet.create({
+	container: {
+		flex: 1,
+		padding: 20,
+		backgroundColor: white
+	},
+	row: {
+		flexDirection: 'row',
+		flex: 1,
+		alignItems: 'center'
+	},
+	iosSubmitBtn: {
+		backgroundColor: purple,
+		padding: 10,
+		borderRadius: 7,
+		height: 45,
+		marginLeft: 40,
+		marginRight: 40,
+	},
+	androidSubmitBtn: {
+		backgroundColor: purple,
+		padding: 10,
+		marginLeft: 40,
+		marginRight: 40,
+		height: 45,
+		borderRadius: 2,
+		alignSelf: 'flex-end',
+		justifyContent:'center',
+		alignItems: 'center'
+
+	},
+	submitBtnText: {
+		color: white,
+		fontSize: 22,
+		textAlign: 'center'
+	}
+})
 
 function mapStateToProps(state) {
 	const key = timeToString()
