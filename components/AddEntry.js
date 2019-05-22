@@ -90,13 +90,13 @@ class AddEntry extends Component {
 
 		if(this.props.alreadyLogged) {
 			return (
-				<View style={styles.row}>
-					<Ionicons
+				<View style={styles.center}>
+					<Ionicons style={Platform.OS === 'ios' ? 'happy-outline' : 'md-happy'}
 						name={'md-happy'}
 						size={100}
 					/>
 					<Text>You already logged you information for today</Text>
-					<TextButton onPress={this.reset}>
+					<TextButton onPress={this.reset} style={{padding: 10}}>
 						Reset
 					</TextButton>
 				</View>
@@ -111,7 +111,7 @@ class AddEntry extends Component {
 					const value = this.state[key]
 
 					return (
-						<View key={key}>
+						<View key={key} style={styles.row}>
 							{getIcon()}
 							{type === 'slider'
 								? <MySlider
@@ -157,8 +157,8 @@ const styles = StyleSheet.create({
 	androidSubmitBtn: {
 		backgroundColor: purple,
 		padding: 10,
-		marginLeft: 40,
-		marginRight: 40,
+		marginLeft: 30,
+		marginRight: 30,
 		height: 45,
 		borderRadius: 2,
 		alignSelf: 'flex-end',
@@ -170,6 +170,13 @@ const styles = StyleSheet.create({
 		color: white,
 		fontSize: 22,
 		textAlign: 'center'
+	},
+	center: {
+		flex: 1,
+		justifyContent: 'center',
+		alignItems: 'center',
+		marginRight: 30,
+		marginLeft: 30,
 	}
 })
 
